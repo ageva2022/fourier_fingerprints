@@ -33,5 +33,12 @@ for i = 1:3
     %imshow(U(:,1:r)*S(1:r,1:r)*V(:,1:r)');
     FPimg = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
     imshow(FPimg);
-    imwrite(FPimg,'fingerprintARCH_svd.jpg');
+    if (i == 1)
+        imwrite(FPimg,'fingerprintLOOP_svd.jpg');
+    elseif (i == 2)
+        imwrite(FPimg,'fingerprintWHORL_svd.jpg');
+    else
+        imwrite(FPimg,'fingerprintARCH_svd.jpg');
+    end
+    % as you can see ^^^^ we're big fans of hard coding.
 end

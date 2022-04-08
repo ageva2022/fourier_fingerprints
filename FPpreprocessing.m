@@ -15,21 +15,17 @@ for i = 1:3
         Y = imread('fingerprintARCH.jpeg');
     end
     
-    gray = rgb2gray(Y);
-    imwrite(gray,'fp.jpg');
-    Z = imread('fp.jpg');
-    W = rot90(Z,3);
-    X = im2double(W);
+    gray = im2double( rgb2gray(Y) );
     
-    %figure;
-    %imshow(X);
-    %uncomment out above two lines to see the grayscale 
+    %imshow(gray);
+    %uncomment out the above line to see the grayscale 
     %of the uncompressed image.
     
-    [U,S,V] = svd(X);
+    [U,S,V] = svd(gray);
     figure;
     r = 10; % max value for r = 400 b/c img is 400x600
     colormap('gray');
+    
     FPimg = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
     imshow(FPimg);
     if (i == 1)

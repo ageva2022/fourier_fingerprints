@@ -30,7 +30,6 @@ for i = 1:3
     figure;
     r = 10; % max value for r = 400 b/c img is 400x600
     colormap('gray');
-    %imshow(U(:,1:r)*S(1:r,1:r)*V(:,1:r)');
     FPimg = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
     imshow(FPimg);
     if (i == 1)

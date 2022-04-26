@@ -1,0 +1,212 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT CHANGE HERE
+%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letter]{amsart}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{titlesec}
+\usepackage{textcomp}
+\titleformat{\subsection}[frame]
+{\normalfont} {} {2pt} {\normalsize\bfseries\filright\thesubsection.\quad}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath,amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows}
+\usepackage[margin=1in]{geometry}
+\titleformat {\section}
+  {\normalfont \Large \bfseries \centering}{\thesection}{1em}{}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[fontsize=12pt]{scrextend}
+\restylefloat{table}
+\usepackage{mathtools}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\dd}{$D$ }
+\newcommand{\intt}{int \text{ }}
+\newcommand{\bd}{bd \text{ }}
+\newcommand{\nbd}{nbd \text{ }}
+\newcommand{\cl}{cl \text{ }}
+\newcommand{\me}{\mathrm{e}}
+\newcommand\mypound{\protect\scalebox{0.8}{\protect\raisebox{0.4ex}{\#}}}
+\definecolor{UMassMaroon}{RGB}{136,28,28}
+\setcounter{MaxMatrixCols}{20}
+
+%%%%%%%%%%%%%%%%%
+% CHANGE HERE
+%%%%%%%%%%%%%%%%%
+\newcommand{\StudentName}{Harold Thidemann. Adi Geva, Dhruvi LASTNAME}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT CHANGE HERE
+%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Math 552: Applications Of Scientific Computing $\mid$ Project ]{Math 552: Applications Of Scientific Computing\\Project}
+\author[\StudentName]{\StudentName}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%
+% CHANGE HERE
+%%%%%%%%%%%%%%%%%
+
+\section*{Section 1}
+
+We should probably start here, we are NOT making it double columned, and there are examples on how to insert images later on.
+
+\newpage
+
+\section*{Section 2.1}
+If a problem has multiple parts, please put a \verb!\newpage! between each subpart.  For example, like this.
+\newpage
+
+\section*{Section 2.2}
+And like this.
+\newpage
+
+\section*{Section 2.3}
+And like this.
+\newpage
+
+\section*{Section 3}
+Similarly, if a problem (or a subpart) ends up taking more than 1 page, please put (Continued) in the \verb!\section*! for that page.  You can also use \verb!\newpage! to choose where (in your work) the current page ends and where the next page begins.
+\newpage
+
+\section*{Section 3 (Continued)}
+Like this.
+\newpage
+
+\section*{Example Proof}
+\noindent\textbf{Want to Prove:} $x+y=x+z \ni x,y,z \in \mathcal{Z} \implies y=z$.\vspace{0.5em}\\
+$\begin{aligned}
+x+y &= x + z\\
+(-x)+(x+y) &= (-x)+(x+z)\\
+((-x)+x)+y&=((-x)+x)+z\\
+0+y &= 0+z\\
+y &= z \qed
+\end{aligned}$
+\text{ }\vspace{2em}\\
+\textbf{\LaTeX\ Pro Tip}: They key to the \texttt{aligned} environment is to use the \& operator as what everything aligns to.  Note that, above, we always have it as \texttt{\&=}, meaning that each line has the \texttt{=} sign aligned to the same spot.  This makes the proof much easier to read.\vspace{1em}\\
+\textbf{Math Pro Tip}: The $\qed$ symbol, called \href{https://en.wikipedia.org/wiki/Q.E.D.}{Q.E.D.}, is often used to signal the end of a proof.
+\newpage
+
+\section*{Example Math Work}
+$\begin{aligned}
+(1 + 2 + 3 + 4 + 5) \cdot 1000 &= (3+3+4+5) \cdot 1000\\
+&= (6+4+5) \cdot 1000\\
+&= (10+5) \cdot 1000\\
+&= (15) \cdot 1000\\
+1 + 2 + 3 + 4 + 5 &= \doubleunderline{15000}\\
+\end{aligned}$
+\text{ }\vspace{2em}\\
+\textbf{\LaTeX\ Pro Tip}: Feel free to use the \verb!\doubleunderline! command to double-underline your final answer, which can make your work easier to read.
+\newpage
+
+\section*{Example Table}
+\textbf{\LaTeX\ Pro Tip}: Use \href{https://tablesgenerator.com/}{tablesgenerator.com} to save \textit{a lot} of time when making tables.  You can even copy/paste from Excel or import a CSV!
+\begin{table}[H]
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{333333} 
+{\color[HTML]{FFFFFF} \textbf{Column 1}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 2}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 3}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 4}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 5}} \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+\end{tabular}
+\caption{Table Caption Here}
+\end{table}
+\newpage
+
+\section*{Using an Uploaded Photo}
+\textbf{\LaTeX\ Pro Tip}: Avoid using underscores in file names to make your life easier.  \href{https://tex.stackexchange.com/questions/58689/how-to-use-an-underscore-in-a-filename}{There are ways around this} but it's likely easier to just rename a file.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{cute-kitten.jpg}
+    \caption{Example Image A}
+\end{figure}
+\newpage
+
+\section*{Single Figure}
+\textbf{\LaTeX\ Pro Tip}: To remove the image caption, comment out the \verb!\caption! line.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-a}
+    \caption{Example Image A}
+\end{figure}
+\newpage
+
+\section*{Two Side-By-Side Figures}
+\begin{minipage}[H]{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image-a}
+    \captionof{figure}{Example Image A}
+\end{minipage}
+\begin{minipage}[H]{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image-b}
+    \captionof{figure}{Example Image B}
+\end{minipage}
+\newpage
+
+\section*{Three Side-By-Side Figures}
+\begin{minipage}[H]{0.33\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{example-image-a}
+    \captionof{figure}{Example Image A}
+\end{minipage}
+\begin{minipage}[H]{0.33\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{example-image-b}
+    \captionof{figure}{Example Image B}
+\end{minipage}
+\begin{minipage}[H]{0.33\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{example-image-c}
+    \captionof{figure}{Example Image C}
+\end{minipage}
+\newpage
+
+\section*{Side-By-Side Figure and Table}
+\begin{minipage}[H]{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image-a}
+    \captionof{figure}{Example Image A}
+\end{minipage}
+\begin{minipage}[H]{0.5\textwidth}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{333333} 
+{\color[HTML]{FFFFFF} \textbf{Column 1}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 2}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 3}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 4}} &
+  {\color[HTML]{FFFFFF} \textbf{Column 5}} \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+ &  &  &  &  \\ \hline
+\end{tabular}%
+}
+\captionof{table}{Table Caption}
+\end{minipage}
+\newpage
+
+\end{document}

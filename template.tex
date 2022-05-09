@@ -102,7 +102,81 @@ Since every person has a unique fingerprint, the Fourier transform of an image o
 
 
 \section*{Methods}
-Methods here.
+Similarly to the paper on which we modeled our project, we divided the process into two steps: preprocessing and finding the Fourier Spectrums.
+
+In the original paper, the authors reduced the dimension of the matrix from a 512x512 matrix to a 256x256 matrix and translated it into a hexagonal grid by taking the average a pixel's six neighboring pixel. We decided to lower the dimensionality of the input image by taking the Singular Value Decomposition (SVD) of it. 
+
+Given an input matrix $A^{m\times n}$, the SVD of $A$ is $U \Sigma V^T$, where $A$ is an orthogonal $m \times m$ matrix, $\Sigma$ is $m \times n$ diagonal matrix, and $V$ is an orthogonal $n \times n$ matrix. 
+The values of $\Sigma$ are in decreasing order such that $\sigma_1 \geq \sigma_2 \geq \ldots \sigma_r > 0$ where $r$ is $rank(A)$. Since the smaller $\sigma$ values correspond to information that is less relevant to the original input, we can truncate them in order to compress our image. 
+
+We began our experiment by converting the input image to grayscale and then calling MATLAB's built in SVD function. Since our input images are $400\times600$, $r=400$. However, we found that using the truncation value of 10 is sufficient to preserve the information about the input fingerprint image. 
+
+Our script for this step is:
+\begin{verbatim}
+%{
+code derived from Lecturer Navid Mohammad Mirzaei's
+SVD image compression code
+%}
+clc
+clear
+
+for i = 1:3
+    
+    if (i == 1)
+        Y = imread('fingerprintLOOP.jpeg');
+    elseif (i == 2)
+        Y = imread('fingerprintWHORL.jpeg');
+    else
+        Y = imread('fingerprintARCH.jpeg');
+    end
+    
+    gray = im2double( rgb2gray(Y) );
+    
+    %imshow(gray);
+    %uncomment out the above line to see the grayscale 
+    %of the uncompressed image.
+    
+    [U,S,V] = svd(gray);
+    figure;
+    r = 10; % max value for r = 400 b/c img is 400x600
+    colormap('gray');
+    
+    FPimg = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
+    imshow(FPimg);
+    if (i == 1)
+        imwrite(FPimg,'fingerprintLOOP_svd.jpg');
+    elseif (i == 2)
+        imwrite(FPimg,'fingerprintWHORL_svd.jpg');
+    else
+        imwrite(FPimg,'fingerprintARCH_svd.jpg');
+    end
+    % as you can see ^^^^ we're big fans of hard coding.
+end
+\end{verbatim}
+
+Upon obtaining the compressed image, we then found the frequency spectrum of it using Fast Fourier Transform (FFT). In the original paper, the authors implemented Hexagonal Fast Fourier Transform. Hexagonal sampling is optimal to rectangular sampling for two dimensional inputs (in many cases, like here, an image) and as there is less overlap between resampling, it is therefore more efficient. However, given the scope of this project, we tried to reproduce results using the built in MATLAB FFT2 function.
+The FFT is an algorithm that determines the DFT of an input significantly faster than computing it directly. In the one dimensional case, given an input of size $n$, FFT reduces the number of computations from O($n^2$) to O($n\log n$). In many image processing applications, we deal with 2-dimensional inputs. This less costly algorithm is beneficial when working with large matrices. 
+
+FFT2 returns the two-dimensional Fourier transform of a matrix using a fast Fourier transform algorithm.
+
+Our script for this step is:
+\begin{verbatim}
+%Change input image accordingly
+I = imread('fingerprintWHORL_svd.jpg');
+
+F = fft2(I);
+
+F = fftshift(F); % Center FFT
+
+F = abs(F); % Get the magnitude
+F = log(F+1); % Use log, for perceptual scaling, and +1 since log(0) is undefined
+
+imshow(F,[]); % Display the result
+\end{verbatim}
+
+Given an input image of a fingerprint, the script above produces the frequency spectrum as desired.
+
+Lastly, the original paper classifies the fingerprints using k Nearest Neighbors algorithm. However, given the scope of this project and how much training data we would need to implement a successful model, we decided to skip this step. 
 
 \begin{minipage}[H]{0.33\textwidth}
     \centering

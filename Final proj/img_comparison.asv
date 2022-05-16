@@ -1,12 +1,12 @@
 clc 
 clear
 
-arch = imread('arch_fft.jpeg');
-arch_cp = imread('arch_cp_fft.jpeg');
-loop = imread('loop_fft.jpeg');
-whorl = imread('whorl_fft.jpeg');
+arch = imr'arch_fft.jpeg';
+arch_cp = 'arch_cp_fft.jpeg';
+loop = 'loop_fft.jpeg';
+whorl = 'whorl_fft.jpeg';
 
-img_comp(loop,whorl);
+img_comp(arch,arch_cp);
 
 function [percent] = img_comp(orig,comp)
 
@@ -20,10 +20,9 @@ function [percent] = img_comp(orig,comp)
         disp('Images must have the same size and class.');
 
     else 
-        diff_matrix = imsubtract(pic1,pic2);
-        %diff_matrix
+        imsubtract(pic1,pic2)
         k = pic1==pic2 ;   % get the equal elements 
         iwant = sum(k(:));   % total number of equal elements
-        percent_similarity = iwant/(x1*y1)*100
+        percent = iwant/(x1*y1)*100
     end
 end

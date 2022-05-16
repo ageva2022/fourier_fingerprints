@@ -1,22 +1,10 @@
 clc 
 clear
 
-arch = imread('arch_fft.jpeg');
-arch_cp = imread('arch_cp_fft.jpeg');
-loop = imread('loop_fft.jpeg');
-whorl = imread('whorl_fft.jpeg');
-
-disp('arch');
-disp(size(arch));
-
-disp('arch_cp');
-disp(size(arch_cp));
-
-disp('loop');
-disp(size(loop));
-
-disp('whorl');
-disp(size(whorl));
+arch = 'arch_fft.jpeg';
+arch_cp = 'arch_cp_fft.jpeg';
+loop = 'loop_fft.jpeg';
+whorl = 'whorl_fft.jpeg';
 
 img_comp(arch,arch_cp);
 

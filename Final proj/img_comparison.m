@@ -1,10 +1,10 @@
 clc 
 clear
 
-arch = 'arch_fft.jpg';
-arch_cp = 'arch_cp_fft.jpg';
-loop = 'loop_fft.jpg';
-whorl = 'whorl_fft.jpg';
+arch = 'arch_fft.jpeg';
+arch_cp = 'arch_cp_fft.jpeg';
+loop = 'loop_fft.jpeg';
+whorl = 'whorl_fft.jpeg';
 
 img_comp(arch,arch_cp);
 

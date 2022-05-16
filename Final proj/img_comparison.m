@@ -2,7 +2,7 @@ clc
 clear
 
 arch = 'arch_fft.jpg';
-arch_cp = 'arch_copy_fft.jpg';
+arch_cp = 'arch_cp_fft.jpg';
 loop = 'loop_fft.jpg';
 whorl = 'whorl_fft.jpg';
 
@@ -10,8 +10,8 @@ img_comp(arch,arch_cp);
 
 function [percent] = img_comp(orig,comp)
 
-    pic1 = uint8(orig);
-    pic2 = uint8(comp);
+    pic1 = orig;
+    pic2 = comp;
     
     [x1,y1] = size(pic1);
     [x2,y2] = size(pic2);

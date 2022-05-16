@@ -5,12 +5,14 @@ SVD image compression code
 clc
 clear
 
-for i = 1:3
+for i = 1:4
     
     if (i == 1)
         Y = imread('fingerprintLOOP.jpeg');
     elseif (i == 2)
         Y = imread('fingerprintWHORL.jpeg');
+    elseif (i == 3)
+        Y = imread('fingerprintARCH_copy.jpeg');
     else
         Y = imread('fingerprintARCH.jpeg');
     end
@@ -29,11 +31,13 @@ for i = 1:3
     FPimg = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
     imshow(FPimg);
     if (i == 1)
-        imwrite(FPimg,'fingerprintLOOP_svd.jpg');
+        imwrite(FPimg,'fingerprintLOOP_svd.jpeg');
     elseif (i == 2)
-        imwrite(FPimg,'fingerprintWHORL_svd.jpg');
+        imwrite(FPimg,'fingerprintWHORL_svd.jpeg');
+    elseif (i == 3)
+        imwrite(FPimg,'fingerprintARCH_copy_svd.jpeg');
     else
-        imwrite(FPimg,'fingerprintARCH_svd.jpg');
+        imwrite(FPimg,'fingerprintARCH_svd.jpeg');
     end
     % as you can see ^^^^ we're big fans of hard coding.
 end
